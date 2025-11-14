@@ -142,7 +142,7 @@ export function attack(game: Game, coordinate: string): ShotResult {
 
       return {
         result: "hit",
-        message: `Direct hit! You destroyed the ${hitShip.type} ship`,
+        message: `Direct hit! You destroyed the ship`,
         shipType: hitShip.type,
       };
     }

@@ -24,3 +24,10 @@ export interface ShipDetail {
   type: string;
   size: number;
 }
+
+export interface ShotResult {
+  result: "hit" | "miss" | "invalid";
+  message: string;
+  shipType?: string;
+  gameOver?: boolean;
+}

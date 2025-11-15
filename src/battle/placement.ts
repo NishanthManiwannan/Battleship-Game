@@ -4,12 +4,12 @@ import {
   ShipDetail,
   ShotResult,
   SquareField,
-} from "../../types/types";
+} from "../types/types";
 import {
   convertCoordinateToGrid,
   convertGridToCordinate,
   isValidCoordinate,
-} from "../../utils";
+} from "../utils";
 
 const GRID_SIZE = 10;
 const SHIP_DETAILS: ShipDetail[] = [

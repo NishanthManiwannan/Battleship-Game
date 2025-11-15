@@ -48,7 +48,7 @@ Ships are randomly placed on the board:
 - Destroyer 01: Size 4
 - Destroyer 02: Size 4
 
-## Start a New Battle
+## API end points
 
 1. The server randomly places the ships, saves the game state to Redis, and returns the unique ID for the battle.
 
@@ -62,7 +62,6 @@ Ships are randomly placed on the board:
 ```
 
 Response: 201
-
 ```bash
 {
   "message": "Game started now",
@@ -81,8 +80,12 @@ Response: 201
 |-------------------------------------------------------------------------------------|
 ```
 
-Request Body
+Path Parameter
+```bash
+  :battleId
+```
 
+Request Body
 ```bash
 {
   "coordinate": "C5"
@@ -90,7 +93,6 @@ Request Body
 ```
 
 Response: 200
-
 ```bash
 {
     "message": "Already hit that coordinate",
@@ -103,7 +105,6 @@ Response: 200
     "result": "invalid",
     "coordinate": "C5"
 }
-
 .etc
 ```
 
@@ -118,8 +119,12 @@ Response: 200
 |-----------------------------------------------------------------------------------------------|
 ```
 
-Response: 200
+Path Parameter
+```bash
+  :battleId
+```
 
+Response: 200
 ```bash
 {
   "battleId": "d7e3a9b1-f6c4-4a2e-9d0b-6c8f1e2a5d4c",
@@ -148,11 +153,13 @@ Response: 200
 |----------------------------------------------------------------------------------------------------------|
 | ts-node-dev         | Live reloading, automatically restarting the server on file changes                |
 |----------------------------------------------------------------------------------------------------------|
-| Node.js             | Runtime environment allows to run JavaScript on the server side                    |
+| Node.js             | Runtime environment it allows to run JavaScript on the server side                 |
+|----------------------------------------------------------------------------------------------------------|
+| Jest                | Used to make sure the logic works correctly                                        |
 |----------------------------------------------------------------------------------------------------------|
 ```
 
-# Development Environment & Programs
+# Development Environment & Tools
 ```bash
 |---------------------------------------------------------------------------------------------------------------|
 | Program/Tool        |  What would you accomplish using that?                                                  |

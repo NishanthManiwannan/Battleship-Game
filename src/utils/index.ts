@@ -1,3 +1,6 @@
+import { Game } from "../types/types";
+import redis from "./redisClient";
+
 const BASE_COLUMN = 65;
 
 export function convertGridToCordinate(row: number, col: number): string {
@@ -18,4 +21,14 @@ export function convertCoordinateToGrid(coord: string): {
   const col = coord.charCodeAt(0) - BASE_COLUMN;
   const row = parseInt(coord.substring(1)) - 1;
   return { row, col };
+}
+
+
+export async function saveGame(game: Game) {
+  await redis.set(game.battleId, JSON.stringify(game));
+}
+
+export async function loadGameFromRedis(id: string): Promise<Game | null> {
+  const data = await redis.get(id);
+  return data ? JSON.parse(data) : null;
 }

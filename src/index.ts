@@ -3,15 +3,8 @@ import { v4 as uuidv4 } from "uuid";
 import { attack, battleStart } from "./battle/placement/placement";
 import { Game, ShotResult } from "./types/types";
 import redis, { initRedis } from "./utils/redisClient";
+import { loadGameFromRedis, saveGame } from "./utils";
 
-async function saveGame(game: Game) {
-  await redis.set(game.battleId, JSON.stringify(game));
-}
-
-async function loadGameFromRedis(id: string): Promise<Game | null> {
-  const data = await redis.get(id);
-  return data ? JSON.parse(data) : null;
-}
 const app: Express = express();
 const port = process.env.PORT || 3002;
 
